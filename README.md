@@ -1,3 +1,7 @@
+# YOUTUBE API PHP CONSOLE #
+
+Based on google official php api: https://github.com/google/google-api-php-client
+
 ## CREATE PROJECT ##
 
 https://console.cloud.google.com/projectselector/iam-admin/settings

@@ -42,7 +42,7 @@ $OAUTH2_CLIENT_SECRET = '6ND6-eb4hjMyHqTxoKL95gmg';
 10.211.252.10       zital.youtube.eus
 ```
 
-## RUN SERVER AND GET TOKEN##
+## RUN SERVER AND GET TOKEN ##
 ```
 php -S zital.youtube.eus:8080
 ```

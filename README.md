@@ -1,6 +1,6 @@
 # YOUTUBE API PHP CONSOLE #
 
-Based on google official php api: https://github.com/google/google-api-php-client
+Based on Google's official php api: https://github.com/google/google-api-php-client
 
 ## CREATE PROJECT ##
 

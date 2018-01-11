@@ -84,3 +84,7 @@ It can run through console to automate processes:
 ```
 php upload.php
 ```
+
+## LICENSE ##
+
+All the code that I have writed has GPL 3.0 license

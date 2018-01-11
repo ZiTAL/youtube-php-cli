@@ -77,6 +77,8 @@ if ($client->getAccessToken())
 
 ## UPLOAD EXAMPLE ##
 
+- Replace the *$OAUTH2_CLIENT_ID* and *$OAUTH2_CLIENT_SECRET* vars in *upload.php* file.
+
 This example uploads a video to your youtube account in private mode, check it in: https://www.youtube.com/my_videos?o=U
 
 It can run through console to automate processes:

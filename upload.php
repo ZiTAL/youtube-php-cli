@@ -28,6 +28,7 @@ $client->setClientId($OAUTH2_CLIENT_ID);
 $client->setClientSecret($OAUTH2_CLIENT_SECRET);
 $client->addScope('https://www.googleapis.com/auth/youtube');
 $client->setAccessType('offline');
+$client->setApprovalPrompt('force');
 $client->setAccessToken($token_json);
 
 $youtube = new Google_Service_YouTube($client);

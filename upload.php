@@ -34,15 +34,13 @@ $youtube = new Google_Service_YouTube($client);
 
 if ($client->getAccessToken())
 {
-	// refresh token
-    if($client->isAccessTokenExpired())
+	/// refresh token
+	if($client->isAccessTokenExpired())
     {
-        $newToken = json_decode($client->getAccessToken());
-        $client->refreshToken($newToken->refresh_token);
-        $newToken = json_decode($client->getAccessToken());
-        $access_token = $newToken->access_token;
-        $token_json = $client->getAccessToken();
-        file_put_contents($token_file, $token_json);
+        $newToken = $client->getAccessToken();
+        $client->refreshToken($newToken['refresh_token']);
+        $newToken = $client->getAccessToken();
+        file_put_contents($token_file, json_encode($newToken, JSON_PRETTY_PRINT));
     }
 
 	// video metadata instance

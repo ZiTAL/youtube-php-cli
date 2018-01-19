@@ -84,7 +84,7 @@ php upload.php
 
 ## LICENSE ##
 
-All the code that I have writed has GPL 3.0 license
+All the code that I have written has GPL 3.0 license
 
 ## ESKERRAK ##
 

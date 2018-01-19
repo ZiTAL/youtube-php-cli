@@ -4,14 +4,17 @@ if (!file_exists(__DIR__ . '/vendor/autoload.php'))
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$OAUTH2_CLIENT_ID = 'CHANGE_OAUTH2_CLIENT_ID';
-$OAUTH2_CLIENT_SECRET = 'CHANGE_CLIENT_SECRET ';
-$REDIRECT = 'http://zital.youtube.eus:8080/index.php';
+$OAUTH_FILE = 'oauth.json';
+$OAUTH_FILE = file_get_contents($OAUTH_FILE);
+$OAUTH_FILE = json_decode($OAUTH_FILE, true);
+
 $TOKEN_FILE = 'token.json';
 
+$REDIRECT = 'http://zital.youtube.eus:8080/index.php';
+
 $client = new Google_Client();
-$client->setClientId($OAUTH2_CLIENT_ID);
-$client->setClientSecret($OAUTH2_CLIENT_SECRET);
+$client->setClientId($OAUTH_FILE['OAUTH2_CLIENT_ID']);
+$client->setClientSecret($OAUTH_FILE['OAUTH2_CLIENT_SECRET']);
 $client->setScopes('https://www.googleapis.com/auth/youtube');
 $client->setRedirectUri($REDIRECT);
 $client->setAccessType('offline');

@@ -30,16 +30,16 @@ https://console.developers.google.com/apis/credentials
 
 example:  
 ```
-$OAUTH2_CLIENT_ID = '618761730062-2sf8fo1qphk3c69ir8enrbp2ou821f5e.apps.googleusercontent.com';
-$OAUTH2_CLIENT_SECRET = '6ND6-eb4hjMyHqTxoKL95gmg';
+OAUTH2_CLIENT_ID = '618761730062-2sf8fo1qphk3c69ir8enrbp2ou821f5e.apps.googleusercontent.com';
+OAUTH2_CLIENT_SECRET = '6ND6-eb4hjMyHqTxoKL95gmg';
 ```
 
 ## CODE ##
 
-- Replace the *$OAUTH2_CLIENT_ID* and *$OAUTH2_CLIENT_SECRET* vars in *index.php* file.
-- edit */etc/hosts* and add line, change IP for yours:
+- Replace the *OAUTH2_CLIENT_ID* and *OAUTH2_CLIENT_SECRET* vars in *oauth.json* file.
+- edit */etc/hosts* and add line:
 ```
-10.211.252.10       zital.youtube.eus
+127.0.0.1       zital.youtube.eus
 ```
 
 ## RUN SERVER AND GET TOKEN ##
@@ -54,32 +54,27 @@ php -S zital.youtube.eus:8080
 
 ## RENEW TOKEN THROUGH PHP ##
 
-When the *token.json* is created we never use the google page to get the token, the token can be refreshed through code:
+When the *token.json* is created we never use the google page to get the token, the token can be refreshed through code -youtube_uploader.php-:
 
 ```
 // ...
-$token_file = 'token.json';
-
-if ($client->getAccessToken())
-{
-    if($client->isAccessTokenExpired())
+    private function tokenRefresh()
     {
-        $newToken = json_decode($client->getAccessToken());
-        $client->refreshToken($newToken->refresh_token);
-        $newToken = json_decode($client->getAccessToken());
-        $access_token = $newToken->access_token;
-        $token_json = $client->getAccessToken();
-        file_put_contents($token_file, $token_json);
+        if($this->client->isAccessTokenExpired())
+        {
+            $newToken = $this->client->getAccessToken();
+            $this->client->refreshToken($newToken['refresh_token']);
+            $newToken = $this->client->getAccessToken();
+
+            file_put_contents($this->token_file, json_encode($newToken, JSON_PRETTY_PRINT));
+        }
     }
-}
 // ...
 ```
 
 ## UPLOAD EXAMPLE ##
 
-- Replace the *$OAUTH2_CLIENT_ID* and *$OAUTH2_CLIENT_SECRET* vars in *upload.php* file.
-
-This example uploads a video to your youtube account in private mode, check it in: https://www.youtube.com/my_videos?o=U
+This example uploads a example video to your youtube account in private mode, check it in: https://www.youtube.com/my_videos?o=U
 
 It can run through console to automate processes:
 

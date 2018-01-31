@@ -1,4 +1,4 @@
-# YOUTUBE API PHP CONSOLE #
+# YOUTUBE PHP CLI #
 
 Based on Google's official php api: https://github.com/google/google-api-php-client
 

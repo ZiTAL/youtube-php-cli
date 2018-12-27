@@ -68,10 +68,14 @@ if ($client->getAccessToken())
         'title' => $pi['snippet']['title'],
         'description' => $pi['snippet']['description'],
         'videoId' => $pi['snippet']['resourceId']['videoId'],
-        'thumbnail' => $pi['snippet']['thumbnails']['default']['url']
+        'thumbnail' => $pi['snippet']['thumbnails']['default']['url'],
+        'date' => $pi['snippet']['publishedAt'],
+        'link' => "https://www.youtube.com/watch?v={$pi['snippet']['resourceId']['videoId']}"
       );
     }
   }
+  echo "<pre>";
   print_r($result);
+  echo "</pre>";
 }
 

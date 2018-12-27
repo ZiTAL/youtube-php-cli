@@ -21,7 +21,7 @@ https://console.developers.google.com/apis/credentials
 - click on *down arrow* from *Create credentials* and choose *OAuth client ID*.
 - create *Product name shown to users* in *OAuth consent screen*, for example: *youtube-api*.
 - repeat *Create credentials* step and choose *Web application* option.
-- in *Authorised redirect URIs* field add *http://zital.youtube.eus:8080/index.php*
+- in *Authorised redirect URIs* field add *http://zital.eus:8080/index.php*
 - click on *create*
 
 ## GET OAuth client CREDENTIALS ##

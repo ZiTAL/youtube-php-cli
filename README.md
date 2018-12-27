@@ -4,18 +4,17 @@ Based on Google's official php api: https://github.com/google/google-api-php-cli
 
 ## CREATE PROJECT ##
 
-https://console.cloud.google.com/projectselector/iam-admin/settings
+https://developers.google.com/youtube/registering_an_application
 
 - Create: *youtube* project.
 
 ## ENABLE APIS AND SERVICES ##
 
-https://console.developers.google.com
-
-- click on *ENABLE APIS AND SERVICES*.
-- find *Youtube Data API v3* and *ENABLE* it.
+https://console.developers.google.com/apis/api/youtube.googleapis.com/overview
 
 ## CREATE CREDENTIALS ##
+
+**IMPORTANT**: to add URL-s like redirect domain etc... when you insert the URL push **ENTER** to add it in the list.
 
 https://console.developers.google.com/apis/credentials
 
@@ -37,16 +36,28 @@ OAUTH2_CLIENT_SECRET = '6ND6-eb4hjMyHqTxoKL95gmg';
 ## CODE ##
 
 - Replace the *OAUTH2_CLIENT_ID* and *OAUTH2_CLIENT_SECRET* vars in *oauth.json* file.
+- Add redirect url to **oauth.json** file.
+
+for example:
+
+```
+{
+    "OAUTH2_CLIENT_ID": "618761730062-2sf8fo1qphk3c69ir8enrbp2ou821f5e.apps.googleusercontent.com",
+    "OAUTH2_CLIENT_SECRET": "6ND6-eb4hjMyHqTxoKL95gmg",
+    "REDIRECT": "http://zital.eus:8080/index.php"
+}
+```
+
 - edit */etc/hosts* and add line:
 ```
-127.0.0.1       zital.youtube.eus
+127.0.0.1       zital.eus
 ```
 
 ## RUN SERVER AND GET TOKEN ##
 ```
-php -S zital.youtube.eus:8080
+php -S zital.eus:8080
 ```
-- open browser: http://zital.youtube.eus:8080
+- open browser: http://zital.eus:8080
 - click on *authorise access*.
 - choose google account.
 - allow app

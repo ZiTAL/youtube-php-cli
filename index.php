@@ -10,13 +10,11 @@ $OAUTH_FILE = json_decode($OAUTH_FILE, true);
 
 $TOKEN_FILE = 'token.json';
 
-$REDIRECT = 'http://zital.youtube.eus:8080/index.php';
-
 $client = new Google_Client();
 $client->setClientId($OAUTH_FILE['OAUTH2_CLIENT_ID']);
 $client->setClientSecret($OAUTH_FILE['OAUTH2_CLIENT_SECRET']);
 $client->setScopes('https://www.googleapis.com/auth/youtube');
-$client->setRedirectUri($REDIRECT);
+$client->setRedirectUri($OAUTH_FILE['REDIRECT']);
 $client->setAccessType('offline');
 $client->setApprovalPrompt('force');
 

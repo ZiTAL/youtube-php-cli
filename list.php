@@ -17,16 +17,14 @@ $OAUTH_FILE = file_get_contents($OAUTH_FILE);
 $OAUTH_FILE = json_decode($OAUTH_FILE, true);
 
 $TOKEN_FILE = 'token.json';
-
-$REDIRECT = 'http://zital.youtube.eus:8080/index.php';
+$token_json = file_get_contents($TOKEN_FILE);
 
 $client = new Google_Client();
-$client->setClientId($OAUTH2_CLIENT_ID);
-$client->setClientSecret($OAUTH2_CLIENT_SECRET);
+$client->setClientId($OAUTH_FILE['OAUTH2_CLIENT_ID']);
+$client->setClientSecret($OAUTH_FILE['OAUTH2_CLIENT_SECRET']);
 $client->addScope('https://www.googleapis.com/auth/youtube');
 $client->setAccessType('offline');
 $client->setAccessToken($token_json);
-
 
 if ($client->getAccessToken())
 {
@@ -37,7 +35,7 @@ if ($client->getAccessToken())
       $newToken = json_decode($client->getAccessToken());
       $access_token = $newToken->access_token;
       $token_json = $client->getAccessToken();
-      file_put_contents($token_file, $token_json);
+      file_put_contents($TOKEN_FILE, $token_json);
   }
   $youtube = new Google_Service_YouTube($client);
   $channelsResponse = $youtube->channels->listChannels('contentDetails', array(
